@@ -5,7 +5,8 @@ const element = {
     fieldUsername: $('#user-name'),
     fieldPassword: $('#password'),
     buttonLogin: $('#login-button'),
-    errorLockedOutUser: (dynamicMessage) => $(`//h3[text()="${dynamicMessage}"]`)
+    errorLockedOutUser: (dynamicMessage) => $(`//h3[text()="${dynamicMessage}"]`),
+    errornoUser: (dynamicMessage) => $(`//h3[text()="${dynamicMessage}"]`)
 }
 
 
@@ -21,7 +22,11 @@ class LoginPage extends Page {
         await element.errorLockedOutUser(dynamicMessage).waitForDisplayed({ timeout: 2500 });
         await expect(element.errorLockedOutUser(dynamicMessage)).toBeDisplayed()
     }
-    
+
+    async validatenoUsererror (dynamicMessage){
+        await element.errornoUser(dynamicMessage).waitForDisplayed({ timeout: 2500});
+        await expect(element.errornoUser(dynamicMessage)).toBeDisplayed()
+    }
     open () {
         return super.open('/');
     }
